@@ -14,7 +14,7 @@ app.controller("SampleCtrl", function($scope, $firebase, $firebaseAuth) {
 	
 	$scope.loggedUser = 'Logging in...';
 	
-	$scope.signinWith = function(serviceName) {
+	$scope.signInWith = function(serviceName) {
 		
 		var auth = $firebaseAuth(ref);
 		
