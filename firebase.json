@@ -1,0 +1,9 @@
+{
+  "firebase": "crackling-inferno-3267",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
