@@ -21,10 +21,14 @@
         
         <a href="#" ng-click="signInWith('google')">google</a>
         <a href="#" ng-click="signInWith('facebook')">facebook</a>
-        <a href="#" ng-click="signInWith(email)">email</a>
-        <a href="#" ng-click="signInWith(twitter)">twitter</a>
+        <a href="#" ng-click="signInWith('email')">email</a>
+        <a href="#" ng-click="signInWith('twitter')">twitter</a>
         
         <h3>btw: ur currently logged in as: {{ loggedUser }}</h3>
+
+        <p>Full returned user data object:</p>
+
+        <code>{{fullUserData}}</code>
 
     </body>
 </html>

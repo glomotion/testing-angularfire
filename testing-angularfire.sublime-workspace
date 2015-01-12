@@ -523,7 +523,7 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 664,
+				"buffer_size": 1156,
 				"line_ending": "Unix"
 			}
 		},
@@ -531,7 +531,7 @@
 			"file": "app.js",
 			"settings":
 			{
-				"buffer_size": 711,
+				"buffer_size": 922,
 				"line_ending": "Unix",
 				"name": "var app = angular.module(\"sampleApp\", [\"firebase\"]"
 			}
@@ -744,6 +744,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"ng-cli",
+			"href=\"\"",
 			"https:",
 			"create",
 			"1rUH1kDk7d19ouqbHW7a_xdTYOOaY1_nX7KUlRvfbSgw",
@@ -869,9 +871,7 @@
 			"& +",
 			".chapter",
 			".bites-listing",
-			"bites",
-			".carousel-nav",
-			"sliding"
+			"bites"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -889,7 +889,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -897,15 +897,15 @@
 					"file": "index.html",
 					"settings":
 					{
-						"buffer_size": 664,
+						"buffer_size": 1156,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								106,
-								106
+								1074,
+								1074
 							]
 						],
 						"settings":
@@ -925,21 +925,22 @@
 					"file": "app.js",
 					"settings":
 					{
-						"buffer_size": 711,
+						"buffer_size": 922,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								543,
-								543
+								767,
+								755
 							]
 						],
 						"settings":
 						{
 							"auto_name": "var app = angular.module(\"sampleApp\", [\"firebase\"]",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1006,6 +1007,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 242.0,
+	"side_bar_width": 187.0,
 	"status_bar_visible": true
 }

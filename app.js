@@ -21,6 +21,7 @@ app.controller("SampleCtrl", function($scope, $firebase, $firebaseAuth) {
 		auth.$authWithOAuthPopup(serviceName).then(function(authData) {
 			console.log("Logged in as:", authData.uid);
 			$scope.loggedUser = authData.uid;
+			$scope.fullUserData = authData;
 		}).catch(function(error) {
 			console.error("Authentication failed: ", error);
 			$scope.loggedUser = 'Auth failed: ' + error;
