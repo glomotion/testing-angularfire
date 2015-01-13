@@ -1,4 +1,4 @@
-var app = angular.module("sampleApp", ["firebase"]);
+var app = angular.module("sampleApp", ["firebase","textAngular"]);
 
 app.controller("SampleCtrl", function($scope, $firebase, $firebaseAuth) {
 
@@ -10,7 +10,14 @@ app.controller("SampleCtrl", function($scope, $firebase, $firebaseAuth) {
 
 	// synchronize the object with a three-way data binding
 	// click on `index.html` above to see it used in the DOM!
-	syncObject.$bindTo($scope, "data");
+	syncObject.$bindTo($scope, "firebaseData");
+
+	$scope.$watch('editorData', function(newValue,oldValue){
+		if (newValue) {
+			$scope.firebaseData.$value = newValue;
+			console.log($scope.firebaseData);
+		}
+	});
 	
 	$scope.loggedUser = 'Logging in...';
 	
