@@ -1,22 +1,29 @@
 var app = angular.module("sampleApp", ["firebase","textAngular"]);
 
-app.controller("SampleCtrl", function($scope, $firebase, $firebaseAuth) {
+app.controller("SampleCtrl", function($scope, $firebase, $firebaseAuth, $q) {
 
-	var ref = new Firebase("//crackling-inferno-3267.firebaseio.com/data");
-	var sync = $firebase(ref);
+    var ref = new Firebase("//crackling-inferno-3267.firebaseio.com/data");
+    var sync;
+    var syncObject;
 
-	// download the data into a local object
-	var syncObject = sync.$asObject();
+    function setupSync(userId) {
 
-	// synchronize the object with a three-way data binding
-	// click on `index.html` above to see it used in the DOM!
-	syncObject.$bindTo($scope, "firebaseData");
+        var userRef = ref.child('users').child(userId);
+        sync = $firebase(userRef);
+
+        // download the data into a local object
+        syncObject = sync.$asObject();
+
+        // synchronize the object with a three-way data binding
+        // click on `index.html` above to see it used in the DOM!
+        syncObject.$bindTo($scope, "firebaseData");
+    }
 
 	// at pageload, start the RTE off from whatever data was left before...
 	// (but make sure this only happens once)
 	$scope.$watch('firebaseData',function(n,o){
-		if (n && n.$value !== $scope.editorData) {
-			$scope.editorData = n.$value;
+		if (n && n.text_data !== $scope.editorData) {
+			$scope.editorData = n.text_data;
 		}
 	});
 
@@ -24,18 +31,48 @@ app.controller("SampleCtrl", function($scope, $firebase, $firebaseAuth) {
 	// sync it with the main firebase syncObject
 	// @TODO: This could probably be debounced a little
 	$scope.$watch('editorData', function(n,o){
-		if (n) {
-			$scope.firebaseData.$value = n;
+		if (n && $scope.firebaseData) {
+			$scope.firebaseData.text_data = n;
 		}
 	});
 	
     $scope.loggedUser = 'Logging in...';
 	
+    // A simple function to check whether this user has already used the system before
+    // returns a resolved promise, if the user is new
+    function isNewUser(userId) {
+        var deferred = $q.defer();
+        ref.child('users').child(userId).once('value', function(snapshot) {
+            var exists = (snapshot.val() !== null);
+            console.log('user exists? ',exists);
+            if (exists) {
+                deferred.reject();
+            } else {
+                deferred.resolve();
+            }
+        });
+        return deferred.promise; 
+    }
+
+    // Sign in using Twitter, Google or Facebook
     $scope.signInWith = function(serviceName) {
         var auth = $firebaseAuth(ref);
         auth.$authWithOAuthPopup(serviceName).then(function(authData) {
-            console.log("Logged in as:", authData.uid);
+
+            // Now that they are logged in, check to see if they need a new 
+            // Account to be setup for them or not...
+            isNewUser(authData.uid).then(function(){
+                console.log('making new user');
+                ref.child('users').child(authData.uid).set({
+                    user_id: authData.uid,
+                    text_data: "some starter text"
+                });
+            }, function(err) {
+                console.log('user already exists, load it');                
+            });
+            setupSync(authData.uid);
             $scope.loggedUser = authData.uid;
+            $scope.authOk = true;            
         }).catch(function(error) {
             console.error("Authentication failed: ", error);
             $scope.loggedUser = 'Auth failed: ' + error;
