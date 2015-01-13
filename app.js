@@ -7,7 +7,6 @@ app.controller("SampleCtrl", function($scope, $firebase, $firebaseAuth, $q) {
     var syncObject;
 
     function setupSync(userId) {
-
         var userRef = ref.child('users').child(userId);
         sync = $firebase(userRef);
 
@@ -38,13 +37,12 @@ app.controller("SampleCtrl", function($scope, $firebase, $firebaseAuth, $q) {
 	
     $scope.loggedUser = 'Logging in...';
 	
-    // A simple function to check whether this user has already used the system before
+    // A function to check whether this user has already used the system before
     // returns a resolved promise, if the user is new
     function isNewUser(userId) {
         var deferred = $q.defer();
         ref.child('users').child(userId).once('value', function(snapshot) {
             var exists = (snapshot.val() !== null);
-            console.log('user exists? ',exists);
             if (exists) {
                 deferred.reject();
             } else {
