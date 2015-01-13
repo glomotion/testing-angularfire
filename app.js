@@ -2,7 +2,7 @@ var app = angular.module("sampleApp", ["firebase","textAngular"]);
 
 app.controller("SampleCtrl", function($scope, $firebase, $firebaseAuth) {
 
-	var ref = new Firebase("https://crackling-inferno-3267.firebaseio.com/data");
+	var ref = new Firebase("//crackling-inferno-3267.firebaseio.com/data");
 	var sync = $firebase(ref);
 
 	// download the data into a local object
@@ -12,12 +12,15 @@ app.controller("SampleCtrl", function($scope, $firebase, $firebaseAuth) {
 	// click on `index.html` above to see it used in the DOM!
 	syncObject.$bindTo($scope, "firebaseData");
 
+	// at pageload, start the RTE off from whatever data was left before...
 	$scope.$watch('firebaseData',function(n,o){
-		if (n) {
+		if (n.$value !== $scope.editorData) {
 			$scope.editorData = n.$value;
 		}
 	});
 
+	// as the $scope.editorData object changes, sync it with the main firebase data sync object
+	// @TODO: This could probably be debounced a little
 	$scope.$watch('editorData', function(n,o){
 		if (n) {
 			$scope.firebaseData.$value = n;
