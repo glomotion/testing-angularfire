@@ -29,6 +29,18 @@ app.controller("SampleCtrl", function($scope, $firebase, $firebaseAuth) {
 		}
 	});
 	
+    $scope.loggedUser = 'Logging in...';
+	
+    $scope.signInWith = function(serviceName) {
+        var auth = $firebaseAuth(ref);
+        auth.$authWithOAuthPopup(serviceName).then(function(authData) {
+            console.log("Logged in as:", authData.uid);
+            $scope.loggedUser = authData.uid;
+        }).catch(function(error) {
+            console.error("Authentication failed: ", error);
+            $scope.loggedUser = 'Auth failed: ' + error;
+        });
+    }
 })
 
 
