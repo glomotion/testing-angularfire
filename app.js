@@ -13,6 +13,10 @@ app.controller("SampleCtrl", function($scope, $firebase, $firebaseAuth) {
 	syncObject.$bindTo($scope, "data");
 	
 	$scope.loggedUser = 'Logging in...';
+
+	$scope.$watch('data',function(n,o){
+		console.log(n);
+	})
 	
 	$scope.signInWith = function(serviceName) {
 		
