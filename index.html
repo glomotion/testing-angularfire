@@ -17,16 +17,28 @@
         <script src='textAngular.min.js'></script>
 
         <script src="app.js"></script>
+
+        <style type="text/css">
+
+            text-angular {
+                height: 100%;
+                display: block;
+            }
+
+            .ta-scroll-window.form-control {
+                height: calc(100% - 34px);
+            }
+            .ta-scroll-window > .ta-bind {
+                height: 100%;
+            }
+
+        </style>
     
     </head>
     
     <body ng-controller="SampleCtrl">
-
-        <input ng-model="editorData" type="text">
         
         <text-angular ng-model="editorData"></text-angular>
-
-        <p>{{editorData}}</p>
 
     </body>
 </html>
