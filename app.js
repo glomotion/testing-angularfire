@@ -13,8 +13,9 @@ app.controller("SampleCtrl", function($scope, $firebase, $firebaseAuth) {
 	syncObject.$bindTo($scope, "firebaseData");
 
 	// at pageload, start the RTE off from whatever data was left before...
+	// (but make sure this only happens once)
 	$scope.$watch('firebaseData',function(n,o){
-		if (n.$value !== $scope.editorData) {
+		if (n && n.$value !== $scope.editorData) {
 			$scope.editorData = n.$value;
 		}
 	});
