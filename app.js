@@ -20,7 +20,8 @@ app.controller("SampleCtrl", function($scope, $firebase, $firebaseAuth) {
 		}
 	});
 
-	// as the $scope.editorData object changes, sync it with the main firebase data sync object
+	// as the $scope.editorData object changes (while user types...): 
+	// sync it with the main firebase syncObject
 	// @TODO: This could probably be debounced a little
 	$scope.$watch('editorData', function(n,o){
 		if (n) {
