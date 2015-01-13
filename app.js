@@ -12,10 +12,16 @@ app.controller("SampleCtrl", function($scope, $firebase, $firebaseAuth) {
 	// click on `index.html` above to see it used in the DOM!
 	syncObject.$bindTo($scope, "firebaseData");
 
-	$scope.$watch('editorData', function(newValue,oldValue){
-		if (newValue) {
-			$scope.firebaseData.$value = newValue;
-			console.log($scope.firebaseData);
+	$scope.$watch('firebaseData',function(n,o){
+		if (n) {
+			$scope.editorData = n.$value;
+
+		}
+	});
+
+	$scope.$watch('editorData', function(n,o){
+		if (n) {
+			$scope.firebaseData.$value = n;
 		}
 	});
 	
