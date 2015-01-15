@@ -2,7 +2,7 @@ var app = angular.module("sampleApp", ["firebase"]);
 
 app.controller("SampleCtrl", function($scope, $firebase, $firebaseAuth) {
 
-	var ref = new Firebase("https://crackling-inferno-3267.firebaseio.com/data");
+	var ref = new Firebase("//crackling-inferno-3267.firebaseio.com/data");
 	var sync = $firebase(ref);
 
 	// download the data into a local object
