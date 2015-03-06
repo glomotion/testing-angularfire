@@ -523,7 +523,7 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 1156,
+				"buffer_size": 2454,
 				"line_ending": "Unix"
 			}
 		},
@@ -531,9 +531,17 @@
 			"file": "app.js",
 			"settings":
 			{
-				"buffer_size": 922,
+				"buffer_size": 3892,
 				"line_ending": "Unix",
 				"name": "var app = angular.module(\"sampleApp\", [\"firebase\"]"
+			}
+		},
+		{
+			"file": "firebase.json",
+			"settings":
+			{
+				"buffer_size": 138,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -576,7 +584,11 @@
 	},
 	"console":
 	{
-		"height": 125.0
+		"height": 125.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2deb499853c4371624f5a07e27c334aa' + 'bf8c4e67d14fb0525ba4f89698a6d7e1'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
 	},
 	"distraction_free":
 	{
@@ -587,6 +599,10 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/Users/timpaul/Desktop/GIT-Repos/testing-angularfire"
+	],
 	"file_history":
 	[
 		"/Users/timpaul/Desktop/GIT-Repos/cl-syd-bitesize/app/pikelet/templates/bites/fullscreen-image.html",
@@ -895,17 +911,18 @@
 				{
 					"buffer": 0,
 					"file": "index.html",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1156,
+						"buffer_size": 2454,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1074,
-								1074
+								818,
+								818
 							]
 						],
 						"settings":
@@ -918,34 +935,66 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
 					"file": "app.js",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 922,
+						"buffer_size": 3892,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								767,
-								755
+								129,
+								129
 							]
 						],
 						"settings":
 						{
 							"auto_name": "var app = angular.module(\"sampleApp\", [\"firebase\"]",
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": -0.0,
+						"translation.y": 80.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "firebase.json",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 138,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -982,6 +1031,11 @@
 		]
 	},
 	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "testing-angularfire.sublime-project",
 	"replace":
 	{
 		"height": 0.0
@@ -1003,10 +1057,25 @@
 		],
 		"width": 0.0
 	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
 	"side_bar_width": 187.0,
-	"status_bar_visible": true
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
 }
