@@ -13,7 +13,6 @@ app.controller("SampleCtrl", function($scope, $firebase, $firebaseAuth) {
     	// click on `index.html` above to see it used in the DOM!
     	syncObject.$bindTo($scope, "data");
 
-
 	// $scope.$watch('data',function(n,o){
 	// 	console.log(n);
 	// })
